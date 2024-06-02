@@ -3,6 +3,7 @@ package com.example.lesure.subscription.email;
 import com.example.lesure.subscription.email.models.EmailDetailsDto;
 import com.example.lesure.subscription.models.Subscription;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,8 @@ public class EmailService {
 
     private final JavaMailSender mailSender;
 
-    private final String email = "";
+    @Value("${email.name}")
+    private String email;
 
     public void prepareAndSendEmail(Subscription subscription) {
 
@@ -36,6 +38,6 @@ public class EmailService {
         message.setTo(details.getRecipient());
         message.setSubject(details.getSubject());
         message.setText(details.getMessage());
-//        mailSender.send(message);
+        mailSender.send(message);
     }
 }
