@@ -39,7 +39,7 @@ app:
       maxAgeSecs: 3600
 
 seatgeek:
-  client-id: NDEyODQ0NTR8MTcxNDU4ODU1Mi40ODIwNDE2
+  client-id: ${CLIENT_ID}
 
 email:
   name: ${NAME}
